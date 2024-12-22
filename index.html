@@ -65,6 +65,14 @@
             </div>
         </section>
     </div>
+    <!-----SIGNOS FRASES --------->
+    <h3 style="text-align: center; margin-top: 30px; color: #00ff80; font-weight: bold;">Frase do Dia</h3><div class="signo" data-signo="aries">Áries</div><div class="signo" data-signo="touro">Touro</div><div class="signo" data-signo="gemini">Gêmeos</div><div class="signo" data-signo="cancer">Câncer</div><div class="signo" data-signo="aries">Leão</div><div class="signo" data-signo="touro">Virgem</div><div class="signo" data-signo="gemini">Libra</div><div class="signo" data-signo="cancer">Sagitário</div><div class="signo" data-signo="aries">Escorpião</div><div class="signo" data-signo="touro">Capricórnio</div><div class="signo" data-signo="gemini">Aquário</div><div class="signo" data-signo="cancer">Peixes</div>
+    <!-- Adicione os outros signos -->
+    <p id="mensagem" style="margin-top: 20px; font-weight: bold; text-align: center; color: #77f8e7; font-size: large;"></p>
+        <style>
+        .signo {  display: inline-block;  padding: 12px;  margin: 12px; background: #1e37a5; border-radius: 10px; text-align: center; font-weight: bold; cursor: pointer; color: #e4ff6b; transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;}
+        .signo:hover {transform: scale(1.1); /* Cresce 10% */ box-shadow: 0 4px 15px rgba(255, 255, 0, 0.5); /* Sombra brilhante (amarela) */color: #ee22b1;background-color: #00ff80; /* Altera a cor de fundo */}
+      </style>
     <!--------SOBRE------------>
     <section id="Sobre" class="mt-5 mb-5" style="color: rgb(253, 255, 130);">
         <div pt-5 pb-5>
@@ -89,6 +97,27 @@
             </div>
         </div>
     </section>
+    <div class="compatibilidade-container">
+        <h2> <span class="sinal">❤️</span>Compatibilidade Amorosa<span class="sinal">❤️</span></h2>
+        <div class="compatibilidade-form">
+          <input type="text" id="signo1" placeholder="Primeiro Signo" />
+          <span class="sinal">+</span>
+          <input type="text" id="signo2" placeholder="Segundo Signo" />
+        </div>
+        <button class="ms-2" onclick="calcularCompatibilidade()">Calcular</button>
+        <span id="resultado" class="resultado ms-2">?</span>
+    </div>
+      <style>
+    /* Container centralizado */ .compatibilidade-container {  text-align: center;  margin: 20px auto;  padding-bottom: 20px;  font-family: Poppins,serif;}
+    /* Título */.compatibilidade-container h2 {  font-size: 24px;  margin-bottom: 20px;  color: #78ff4f;}
+    /* Formulário de compatibilidade */.compatibilidade-form {  display: inline-flex;  align-items: center;  margin-bottom: 30px;  justify-content: center;  gap: 10px; /* Espaço entre os elementos */}
+    /* Input estilizado */.compatibilidade-form input {  padding: 10px;  border: 2px solid #ff40cf;  color: #c22f02;  font-weight: bold;  border-radius: 20px; /* Borda arredondada */  font-size: 16px;  text-align: center;  width: 150px;  outline: none; transition: border-color 0.3s;}
+    /* Efeito ao focar no input */ .compatibilidade-form input:focus {  border-color: #38a7da; /* Laranja vibrante */ }
+    /* Sinais + e = */.compatibilidade-form .sinal {  font-size: 24px;  font-weight: bold; color: #e4ff6b;}
+    /* Resultado */.resultado {   font-size: 20px;  font-weight: bold;  color: #fff676; /* Laranja vibrante */}
+    /* Botão de calcular */.compatibilidade-container button {  margin-top: 20px;  padding: 10px 20px;  background: #f35584; /* Laranja vibrante */  color: #fff;  border: none;  border-radius: 20px; /* Borda arredondada no botão */  font-size: 16px;font-weight: bold;cursor: pointer;  transition: background 0.3s;}
+    .compatibilidade-container button:hover { background: #8cd1ff; /* Laranja mais escuro ao passar o mouse */ color: #e43687;}
+      </style>
     <!---------SIGNOS---------->
     <section id="Signos">
         <div class="container">
@@ -676,6 +705,47 @@
         </div>
 </section>
     <footer style="padding: 3%;" id="footer-footer"><div class="container" ><h5>&copy; Signos - Todos os direitos reservados - 2024</h5></div></footer>
+    <script>
+        // JavaScript - Mensagens de Horóscopo
+        const horoscopos = {
+          aries: "Hoje é dia de ação! Não deixe nada para amanhã.",
+          touro: "Foque nas suas prioridades e evite distrações.",
+          gemini: "Converse com pessoas novas, será revigorante.",
+          cancer: "Priorize seu bem-estar emocional hoje.",
+          // Adicione frases para cada signo ...
+        };
+        // Adiciona o evento de clique/touch em cada signo
+        document.querySelectorAll(".signo").forEach(signo => {
+          signo.addEventListener("click", () => {
+            const nomeSigno = signo.getAttribute("data-signo"); // Pega o signo clicado
+            const mensagem = horoscopos[nomeSigno] || "Signo não encontrado!"; // Busca a mensagem
+            document.querySelector("#mensagem").textContent = mensagem; // Mostra a mensagem
+          });
+        });
+      </script>
+    <!-----COMPATIPILI AMOR -------->
+    <script>
+        const niveisCompatibilidade = ["Baixa","Paixão fraquinha!","Alta","Paixão Explosiva!","Amor Eterno!"];
+      
+        function gerarCompatibilidadeAleatoria() {
+          // Retorna um nível aleatório do array
+          return niveisCompatibilidade[
+            Math.floor(Math.random() * niveisCompatibilidade.length)
+          ];}
+        function calcularCompatibilidade() {
+          // Pega os valores digitados pelo usuário
+          const signo1 = document.querySelector("#signo1").value.toLowerCase().trim();
+          const signo2 = document.querySelector("#signo2").value.toLowerCase().trim();
+      
+          if (!signo1 || !signo2) {
+            document.querySelector("#resultado").textContent = "Por favor, insira os dois signos.";
+            return;}
+          // Gera um resultado de compatibilidade aleatório
+          const resultadoAleatorio = gerarCompatibilidadeAleatoria();
+          // Atualiza o resultado na tela
+          document.querySelector("#resultado").textContent = 
+            `${resultadoAleatorio}`; }
+      </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-</html><!---#da20d0;-- #c22f02;--->
+</html>
